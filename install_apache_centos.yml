@@ -1,0 +1,14 @@
+---
+- hosts: 192.168.56.105
+  become: true
+  tasks:
+
+  - name: install httpd package
+    tags: apache, centos, httpd
+    dnf:
+      name:
+        - httpd
+        - php
+      state: latest
+      update_cache: yes
+    when: ansible_distribution =="CentOS"
