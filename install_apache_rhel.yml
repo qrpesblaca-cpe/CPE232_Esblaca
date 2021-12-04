@@ -1,0 +1,22 @@
+---
+- hosts: 192.168.56.106
+  become: true
+  tasks:
+
+  - name: update repository index
+    dnf:
+      update_cache: yes
+    when: ansible_distribution == "Red Hat"
+
+  - name: install apache2 package
+    dnf:
+      name: httpd
+      state: latest
+    when: ansible_distribution == "Red Hat"
+
+  - name: add PHP support for apache
+    dnf:
+      name: php
+      state: latest
+    when: ansible_distribution == "Red Hat"
+
