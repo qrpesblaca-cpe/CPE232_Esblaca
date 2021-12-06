@@ -1,10 +1,12 @@
 ---
 - hosts: all
   become: true
-  tasks:
-  
+  tasks
+  - name: Update Repository Index for Ubuntu
+    apt:
+      update_c
   - name: Install Apache and PHP
-    package:
+    apt:
       name:
         - "{{ apache_package }}"
         - "{{ php_package }}"

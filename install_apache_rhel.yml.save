@@ -1,0 +1,16 @@
+-- hosts: 192.168.56.106
+  become: true
+  tasks:
+
+  - name: install httpd package
+    tags: apache, redhat, httpd
+    package:
+     name:
+       - httpd
+       - php
+     state: present
+
+  - name: start httpd package
+    service:
+     name: httpd
+     state: started
